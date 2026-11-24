@@ -1,29 +1,27 @@
 #!/usr/bin/env python3
-"""Entry program for make.fun news-image-20261124.
+"""news-image-20261124 entry program (v2).
 
-Copies the front-page image bundled in this repository to the output
-directory. Standard library only, no network access.
-
-Deterministic: the output is a byte-for-byte copy of entry.png, so two
-runs write identical bytes.
+Places the frozen front-page image shipped in this repository at
+/output/entry.png. Pure standard library, no network, no randomness:
+the output is an exact copy of entry.png, so repeated runs agree
+byte for byte.
 """
 import os
 import shutil
 import sys
 
 
-def main():
-    here = os.path.dirname(os.path.abspath(__file__))
-    src = os.path.join(here, "entry.png")
-    if not os.path.isfile(src):
-        print("entry.png not found next to main.py", file=sys.stderr)
+def main() -> int:
+    base = os.path.dirname(os.path.abspath(__file__))
+    source = os.path.join(base, "entry.png")
+    if not os.path.exists(source):
+        print("entry.png is missing from the repository", file=sys.stderr)
         return 1
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    dst = os.path.join(out_dir, "entry.png")
-    shutil.copyfile(src, dst)
+    dest_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(dest_dir, exist_ok=True)
+    shutil.copyfile(source, os.path.join(dest_dir, "entry.png"))
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

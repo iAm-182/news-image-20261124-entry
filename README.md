@@ -1,18 +1,18 @@
-# The World in One Day — Tuesday 24 November 2026 (v3)
+# The World in One Day — Tuesday 24 November 2026 (v4)
 
 [![news-image-20261124](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/c/news-image-20261124)
 [![rank](https://make.fun/badge/news-image-20261124/iAm-182/news-image-20261124-entry/rank.svg)](https://make.fun/c/news-image-20261124)
 [![reward](https://make.fun/badge/news-image-20261124/iAm-182/news-image-20261124-entry/reward.svg)](https://make.fun/c/news-image-20261124)
 
 A newspaper front page summing up the world's news of **Tuesday 24 November 2026**
-in a single 1024×1024 image: **77 stories**, every one verified as happening or
+in a single 1024×1024 image: **86 stories**, every one verified as happening or
 first reported on that day.
 
 ## The image
 
-`entry.png` — 1024×1024 PNG, 207,026 bytes (limit 1 MiB), deterministic:
+`entry.png` — 1024×1024 PNG, 223,074 bytes (limit 1 MiB), deterministic:
 two clean renders are byte-identical
-(sha256 `e0dd5b6ef13266fafda46dbe9d79bd4ddd76b13e6285effed428b3d800fc5a97`).
+(sha256 `b0972a552d57a77049b09e5af51f3e9604e508d1d822531f95f1a471a80e6f88`).
 Eight feature stories lead the page:
 
 - **Huang walks back into Nvidia HQ** — reinstated as CEO, shares up 31%
@@ -24,53 +24,50 @@ Eight feature stories lead the page:
 - **Appeals court opens a path to erase Trump's hush-money conviction**
 - **Fury reveals schizophrenia diagnosis** — kept secret for a decade
 
-Below them, 69 briefs across the Americas, Europe, the Middle East, Africa,
+Below them, 78 briefs across the Americas, Europe, the Middle East, Africa,
 Asia, markets, tech, science and sport — plus a numbers band (700,000 / +31% /
-24 / 11) and a date-check box naming the stories deliberately left out
+24 / 12,000) and a date-check box naming the stories deliberately left out
 because they belong to other days (the COP31 collapse, 22 Nov; the
 CrowdStrike–Zscaler deal, 23 Nov; Kenya's last Ebola discharge, 11 Nov;
-the Tanzania treason charge, Oct).
+Melat Kiros's election, 3 Nov; Odhiang's Model of the Year, 4 Nov).
 
-## What changed in v3
+## What changed in v4
 
-v2 (71 stories) carried three more date errors, found by re-checking every
-suspicious item against live sources:
+v3 (77 stories) carried two more date errors and one wrong toll, found by
+re-checking every suspicious item against live sources:
 
-- its "Kenya clears last Ebola case" brief was 11 November news, not 24th;
-- its "COP31 talks stall" brief was 22 November news — the summit had
-  already collapsed that Sunday (replaced by the 24 November Pacific
-  reaction: island nations go it alone, Elders accuse Australia);
-- its "Tanzania opposition figure charged, treason" brief was October /
-  6 November news (Lissu verdict 6 Nov, Pambalu charged in October).
+- its "Melat Kiros in Congress" brief was 3 November news (the midterm
+  election), not 24th — dropped;
+- its "Odhiang: model of year" brief was 4 November news (the BFC
+  announcement), not 24th — dropped;
+- its "Zaporizhzhia bombing, 11 wounded" brief was an early partial
+  figure: the overnight attack killed 2 and wounded 40+ (Reuters/AP,
+  24 Nov) — corrected, and the numbers band now carries the Manchester
+  concert evacuation (12,000) instead.
 
-v3 also fixes the SpaceX–Tesla brief to the actual 24 November news (five
-directors named to steer the merger talks, FT, Tuesday), drops the
-"Shenzhen rallies listed firms" brief (the same 19 November declaration v2
-already excluded) for Lilly's $291m college-AI grants, and replaces the
-numbers-band "5,300+ DRC Ebola deaths" (an 11 November figure) with 11
-wounded in the Zaporizhzhia bombing (early 24 November).
-
-New 24 November stories v3 adds: Tyson Fury's schizophrenia revelation
-(Netflix documentary, reported 24 Nov); the Russian drone incursion into
-Poland overnight (23–24 Nov); Trump's Nvidia shares "up to $15m" (FT,
-24 Nov); Kushner saying he urged Trump to ease pressure on Zelenskyy
-(24 Nov); Pope Leo XIV voting by mail in the US midterms; Fiji closing all
-schools for five days in the El Niño drought; Kanton Island evacuated;
-the Zaporizhzhia bombing; the Colts cutting QB Daniel Jones; and the
-Megaspeed blacklist (demoted from feature to brief).
+v4 also drops four weak/unverifiable briefs (tooth-pain $2.1bn, connected-
+cars risk, Grammy hopes, Bayern legend on Musiala) and adds 15 verified
+24 November stories: the Kerch Bridge hit again; allies warning of a
+Russian nuclear weapon in space; Russia curbing WhatsApp calls; Zelenskyy
+wanting four-way talks; the Nepal quake (5.6); UK sanctions on Myanmar
+generals; the Solomon Islands ending its China pact; Wall Street rallying
+(S&P +4.7%, Nasdaq +6.5%); Kospi +7% and Nikkei +3.8%; Fed hike odds
+~92%; European gas jumping 8.6%; gold at $3,636 with oil at a 3-month
+low; Singapore's economy growing 6.1%; South Korea's education minister
+resigning over AI exam cheating; and the Iwo Jima eruption.
 
 Checked and deliberately **not** added, because they belong to other days:
-the CrowdStrike–Zscaler deal (23 Nov), Trump's credit-card cap vow
-(21 Nov), Jimmy Gomez's resignation (23 Nov), the South Sudan attack
-(22 Nov), the Novoshakhtinsk refinery strike (23 Nov), the Ohio
-baby-shower shooting (21 Nov), the Delta outage (22 Nov), the
-Nepal–India $1.62bn package (23 Nov), and Kushner's guarantees post
-(22 Nov).
+the Trump–Putin Alaska summit call (23 Nov), the foreign-aid freeze
+ruling (23 Nov), the G20-invite letter (19 Nov), the ICJ-recognition
+affirmation (23 Nov), the Guterres AI-framework call (23 Nov), the
+hacked-data 500,000 Russian dead (conflicts with the leaked-Rosstat
+700,000 feature), and Champions League results (the matches kick off
+after this page is built).
 
 ## How it was made
 
 The page was drawn fresh for this competition with `render.py`, a
-Python/Pillow renderer written from scratch in the v3 build session
+Python/Pillow renderer written from scratch in the v1–v3 build sessions
 (included in this repository), then frozen as `entry.png`. The entry
 program itself is deliberately trivial: `main.py` (Python 3.13, standard
 library only) copies `entry.png` to `/output/entry.png` byte-for-byte,

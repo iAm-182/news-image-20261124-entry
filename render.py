@@ -1,34 +1,29 @@
 #!/usr/bin/env python3
-"""Render the 24 November 2026 front page for make.fun news-image-20261124 (v3).
+"""Render the 24 November 2026 front page for make.fun news-image-20261124 (v4).
 
-77 stories (8 features + 69 briefs), every one verified as happening or
-first reported on Tuesday 24 November 2026. v3 changes vs v2 (71 stories):
-  * NEW feature: Russian drone slips into Poland again (overnight 23-24 Nov,
-    Warsaw holds fire; NATO sends AWACS) -- replaces the unverified
-    South-Africa-vote feature.
-  * NEW feature: Tyson Fury reveals schizophrenia diagnosis (reported 24 Nov).
-  * FIXED: "Kenya clears last Ebola case" dropped -- that discharge was 11 Nov.
-  * FIXED: "COP31 talks stall" dropped -- the summit collapsed 22 Nov; replaced
-    by the 24-Nov Pacific reaction (nations go it alone; Elders accuse Australia).
-  * FIXED: "Tanzania opposition figure charged, treason" dropped -- Lissu verdict
-    was 6 Nov, Pambalu charged in October.
-  * FIXED: SpaceX-Tesla brief reworded to the 24-Nov news: five directors named
-    to steer the merger talks (FT, Tuesday).
-  * FIXED: "Shenzhen rallies listed firms" dropped (same 19-Nov declaration
-    story v2 already excluded); replaced by Lilly's $291m college-AI grants.
-  * FIXED: numbers band "5,300+ DRC Ebola deaths" dropped (11-Nov figure);
-    replaced by 11 wounded in the Zaporizhzhia bombing (early 24 Nov).
-  * NEW briefs: Trump "could have gained up to $15m" on Nvidia (FT, 24 Nov);
-    Kushner says he urged Trump to ease pressure on Zelenskyy (24 Nov);
-    Pope Leo XIV to vote by mail (24 Nov); Fiji closes schools 5 days
-    (El Nino drought, 24 Nov); Kanton Island evacuated (24 Nov);
-    Zaporizhzhia bombing wounds 11 (24 Nov); Colts cut QB Daniel Jones (24 Nov);
-    Megaspeed blacklist demoted from feature to brief.
-  * NOT added, date-checked and rejected: CrowdStrike-Zscaler deal (23 Nov),
-    Trump credit-card cap vow (21 Nov), Jimmy Gomez resignation (23 Nov),
-    South Sudan attack (22 Nov), Novoshakhtinsk refinery strike (23 Nov),
-    Ohio baby-shower shooting (21 Nov), Delta outage (22 Nov),
-    Nepal-India $1.62bn package (23 Nov), Kushner guarantees post (22 Nov).
+86 stories (8 features + 78 briefs), every one verified as happening or
+first reported on Tuesday 24 November 2026. v4 changes vs v3 (77 stories):
+  * FIXED (date errors): "Melat Kiros in Congress" dropped -- she was
+    elected 3 Nov, not 24 Nov. "Odhiang: model of year" dropped -- the
+    BFC announced it 4 Nov, not 24 Nov.
+  * FIXED (wrong toll): "Zaporizhzhia bombing, 11 wounded" was an early
+    partial figure; the attack killed 2 and wounded 40+ (Reuters/AP, 24 Nov).
+    Numbers band now carries the Manchester evacuation (12,000) instead.
+  * DROPPED (weak/unverifiable): tooth-pain $2.1bn, connected-cars risk,
+    Grammy hopes, Bayern legend on Musiala.
+  * NEW briefs (15, all verified 24 Nov): Kerch Bridge hit again; allies
+    warn of a Russian nuclear weapon in space; Russia curbs WhatsApp calls;
+    Zelenskyy wants four-way talks; Nepal quake 5.6; UK sanctions Myanmar
+    generals; Solomon Islands ends China pact; Wall St rallies (S&P +4.7%,
+    Nasdaq +6.5%); Kospi +7%, Nikkei +3.8%; Fed hike odds ~92%; European
+    gas jumps 8.6%; gold $3,636, oil at 3-month low; Singapore economy
+    +6.1%; S. Korea minister resigns (AI exam cheating); Iwo Jima eruption.
+  * NOT added, date-checked and rejected: Trump-Putin Alaska summit call
+    (23 Nov), foreign-aid freeze ruling (23 Nov), G20-invite letter
+    (19 Nov), ICJ-recognition affirmation (23 Nov), Guterres AI framework
+    call (23 Nov), hacked-data 500,000 Russian dead (conflicts with the
+    leaked-Rosstat 700,000 feature), UCL results (matches kick off after
+    this page is built).
 
 Writes entry.png (1024x1024, deterministic) next to this file.
 
@@ -136,7 +131,7 @@ BIG_NUMBERS = [
     ("700,000", "Russian war dead, leaked toll"),
     ("+31%", "Nvidia shares in a single day"),
     ("24", "dead in the Indonesia factory fire"),
-    ("11", "wounded in Zaporizhzhia bombing"),
+    ("12,000", "evacuated from Manchester gig"),
 ]
 
 BRIEF_COLUMNS = [
@@ -145,7 +140,6 @@ BRIEF_COLUMNS = [
         ("US holds Patriot shipments", "60 await OK"),
         ("Norway voids oil licences", "court rules"),
         ("Pentagon rebukes Canada", "F-35 gaps"),
-        ("Melat Kiros in Congress", "first Gen Z woman"),
         ("Two NJ women indicted", "staged attack"),
         ("Princeton scientist held", "by ICE in DC"),
         ("ICE detains father, daughter", "in Seattle"),
@@ -164,6 +158,10 @@ BRIEF_COLUMNS = [
         ("Trump \u2018up to $15m\u2019 on Nvidia", "FT estimate"),
         ("Kushner urged Trump to ease off", "on Zelenskyy"),
         ("Pope Leo XIV to vote by mail", "in US midterms"),
+        ("Kerch Bridge hit again", "Ukraine strikes"),
+        ("Allies warn of space nuke", "Russia may launch in Dec"),
+        ("Russia curbs WhatsApp calls", "Telegram too"),
+        ("Zelenskyy wants 4-way talks", "as soon as possible"),
     ]),
     ("MIDDLE EAST \u00b7 AFRICA \u00b7 ASIA", [
         ("Vance, Rubio meet Qatari PM", "on Iran"),
@@ -187,8 +185,11 @@ BRIEF_COLUMNS = [
         ("Pacific Elders accuse Australia", "over COP31"),
         ("Fiji closes all schools 5 days", "El Ni\u00f1o drought"),
         ("Kanton Island evacuated", "a day\u2019s notice"),
-        ("Zaporizhzhia bombing", "11 wounded, flats hit"),
+        ("Zaporizhzhia strike", "2 killed, 40+ wounded"),
         ("Iran warns over US blockade", "vows response"),
+        ("Nepal quake 5.6", "near China border"),
+        ("UK sanctions Myanmar generals", "after ICJ ruling"),
+        ("Solomon Islands ends China pact", "security deal"),
     ]),
     ("MARKETS \u00b7 TECH \u00b7 SCIENCE \u00b7 SPORT", [
         ("SpaceX, Tesla name 5 directors", "merger talks"),
@@ -206,21 +207,24 @@ BRIEF_COLUMNS = [
         ("Genome screening hope", "more patients"),
         ("Parkinson\u2019s clue", "stem-cell model"),
         ("Plants brew cancer drug", "Nature Chem. Biol."),
-        ("Tooth pain costs $2.1bn", "in Australia"),
-        ("Connected cars \u2018a risk\u2019", "can track victims"),
         ("World-first \u2018megafire\u2019 sim", "UNSW AI training"),
         ("UCL tonight", "Arsenal, City, Real in action"),
-        ("Bayern legend speaks out", "over Musiala"),
-        ("Odhiang: model of year", "refugee-born star"),
-        ("Grammy hopes: Tyla, Tems", "noms near"),
         ("Colts cut QB Daniel Jones", "after QB change"),
+        ("Wall St rallies", "S&P +4.7%, Nasdaq +6.5%"),
+        ("Kospi +7%, Nikkei +3.8%", "Asia rallies"),
+        ("Fed hike odds ~92%", "December"),
+        ("European gas jumps 8.6%", "\u20ac96/MWh, cold snap"),
+        ("Gold $3,636, oil 3-month low", "Brent $89"),
+        ("Singapore economy +6.1%", "Q3, AI demand"),
+        ("S. Korea minister resigns", "AI exam cheating"),
+        ("Iwo Jima eruption", "reshapes coastline"),
     ]),
 ]
 
-DATE_CHECK = ("DATE CHECK \u2014 Not today\u2019s news, so not on this page: the COP31 collapse "
-              "(22 Nov), the CrowdStrike\u2013Zscaler deal (23 Nov), Kenya\u2019s last Ebola "
-              "discharge (11 Nov), the Tanzania treason charge (Oct). Every story here "
-              "happened or was first reported on Tuesday 24 November 2026.")
+DATE_CHECK = ("DATE CHECK \u2014 Not today\u2019s news, so not on this page: COP31 collapse "
+              "(22 Nov), CrowdStrike\u2013Zscaler (23 Nov), Kenya\u2019s Ebola "
+              "discharge (11 Nov), Kiros elected (3 Nov), Odhiang award "
+              "(4 Nov). Every story here is from Tuesday 24 November 2026.")
 
 
 # ------------------------------------------------------------------ drawing
@@ -248,7 +252,7 @@ class Page:
         tw = d.textlength(title, font=f_title)
         d.text(((W - tw) / 2, self.y), title, font=f_title, fill=INK)
         self.y += 60
-        self.rule(weight=2, gap_after=7)
+        self.rule(weight=2, gap_after=5)
         f_date = sans_b(25)
         date = "TUESDAY  24  NOVEMBER  2026"
         dw = d.textlength(date, font=f_date)
@@ -259,7 +263,7 @@ class Page:
                "or was first reported today")
         gw = d.textlength(tag, font=f_tag)
         d.text(((W - gw) / 2, self.y), tag, font=f_tag, fill=MUTED)
-        self.y += 22
+        self.y += 20
         self.rule(weight=2, gap_after=9)
 
     def features(self):
@@ -295,7 +299,7 @@ class Page:
 
     def numbers_band(self):
         d = self.d
-        band_h = 52
+        band_h = 48
         d.rectangle([self.x0, self.y, self.x1, self.y + band_h], fill=NAVY)
         seg = (self.x1 - self.x0) // 4
         f_num = sans_b(29)
@@ -305,7 +309,7 @@ class Page:
             nw = d.textlength(num, font=f_num)
             d.text((cx - nw / 2, self.y + 2), num, font=f_num, fill=(255, 255, 255))
             lw = d.textlength(lab, font=f_lab)
-            d.text((cx - lw / 2, self.y + 34), lab, font=f_lab, fill=(198, 202, 216))
+            d.text((cx - lw / 2, self.y + 32), lab, font=f_lab, fill=(198, 202, 216))
             if i:
                 d.line([self.x0 + i * seg, self.y + 8,
                         self.x0 + i * seg, self.y + band_h - 8],
@@ -324,7 +328,7 @@ class Page:
             d.text((cx, self.y), section, font=f_sec, fill=RED)
         self.y += 19
         self.rule(weight=1, gap_after=5)
-        row_h = 14
+        row_h = 13
         top = self.y
         rows = max(len(items) for _, items in BRIEF_COLUMNS)
         for ci, (_section, items) in enumerate(BRIEF_COLUMNS):

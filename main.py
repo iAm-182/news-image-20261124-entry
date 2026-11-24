@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""news-image-20261124 entry program (v2).
+"""news-image-20261124 entry program (v3).
 
 Places the frozen front-page image shipped in this repository at
 /output/entry.png. Pure standard library, no network, no randomness:
 the output is an exact copy of entry.png, so repeated runs agree
-byte for byte.
+byte for byte. v3 image: 77 stories, sha256
+e0dd5b6ef13266fafda46dbe9d79bd4ddd76b13e6285effed428b3d800fc5a97.
 """
 import os
 import shutil
